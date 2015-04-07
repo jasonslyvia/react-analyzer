@@ -10,7 +10,7 @@ Give you a human readable structure of your React component
 
 ## Demo
 
-open `demo/index.html` for local demo, or view [Online Demo](jasonslyvia.github.io/react-analyzer/demo/index.html).
+open `demo/index.html` for local demo, or view [Online Demo](https://jasonslyvia.github.io/react-analyzer/).
 
 ## Roadmap
 
