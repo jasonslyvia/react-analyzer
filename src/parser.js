@@ -87,7 +87,7 @@ export function propsParser(ast, sourceCode) {
 
           var obj = {};
           obj.name = propName;
-          obj.type = sourceCode.slice(propType.start, propType.end).replace(/React\.PropTypes\./g, '').replace(/\bfunc\b/, 'function');
+          obj.type = sourceCode.slice(propType.start, propType.end).toString().replace(/React\.PropTypes\./g, '').replace(/\bfunc\b/, 'function');
           props.push(obj);
         });
 
