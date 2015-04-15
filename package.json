@@ -1,8 +1,8 @@
 {
   "name": "react-analyzer",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Give you a human readable structure of your React component",
-  "main": "index.bundle.js",
+  "main": "lib/index.js",
   "scripts": {
     "test": "npm run test",
     "build": "browserify src/index.js -t babelify -o index.bundle.js",
