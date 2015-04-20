@@ -1,6 +1,6 @@
 {
   "name": "react-analyzer",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Give you a human readable structure of your React component",
   "main": "lib/index.js",
   "scripts": {
@@ -26,7 +26,7 @@
   },
   "homepage": "https://github.com/jasonslyvia/react-analyzer",
   "dependencies": {
-    "babel": "~4.7.16",
+    "babel": "~5.1.0",
     "estraverse": "^3.1.0",
     "lodash": "^3.6.0"
   },

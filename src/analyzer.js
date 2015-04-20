@@ -18,7 +18,7 @@ export default function reactAnalyzer (file) {
   }
 
   log('Transforming with Babel');
-  var ast = transform(file).ast.program;
+  var ast = transform(file, {stage: 0}).ast.program;
 
   return {
     name: nameParser(ast),
