@@ -14,5 +14,5 @@ open `demo/index.html` for local demo, or view [Online Demo](https://jasonslyvia
 
 ## Roadmap
 
- [ ] Analyze mixin file for compact `getDefaultProps` evaluate
- [ ] Support function call as return value of `getDefaultProps`
+[ ] Analyze mixin file for compact `getDefaultProps` evaluate
+[ ] Support function call as return value of `getDefaultProps`

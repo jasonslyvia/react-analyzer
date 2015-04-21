@@ -7,7 +7,7 @@ export function requireParser(ast) {
     return ast;
   }
 
-  var deps = [];
+  let deps = [];
   estraverse.traverse(ast, {
     enter (node, parent) {
       if (node.type === 'Identifier' && node.name === 'require' && parent.type === 'CallExpression') {
@@ -25,7 +25,7 @@ export function mixinParser(ast, sourceCode) {
     return ast;
   }
 
-  var mixins = [];
+  let mixins = [];
   estraverse.traverse(ast, {
     enter (node, parent) {
       if (node.type === 'Identifier' && node.name === 'mixins' && parent.type === 'Property') {
@@ -46,7 +46,7 @@ export function nameParser(ast) {
     return ast;
   }
 
-  var name = '<<anonymous>>';
+  let name = '<<anonymous>>';
   estraverse.traverse(ast, {
     enter (node, parent) {
       if (node.type === 'Identifier' && node.value === 'displayName' && parent.type === 'Property') {
@@ -73,21 +73,34 @@ export function propsParser(ast, sourceCode) {
     return ast;
   }
 
-  var props = [];
+  let props = [];
 
   //Parse `propTypes`
   estraverse.traverse(ast, {
     enter (node, parent) {
       if (node.type === 'Identifier' && node.name === 'propTypes') {
-        var propTypes = parent.value.properties;
+        let propTypes = parent.value.properties;
 
         propTypes.forEach((item) => {
-          var propName = item.key.name;
-          var propType = item.value;
+          let propName = item.key.name;
+          let propType = item.value;
 
-          var obj = {};
+          let obj = {};
           obj.name = propName;
-          obj.type = sourceCode.slice(propType.start, propType.end).toString().replace(/React\.PropTypes\./g, '').replace(/\bfunc\b/, 'function');
+          obj.type = sourceCode
+                      .slice(propType.start, propType.end)
+                      .toString()
+                      .replace(/React\.PropTypes\./g, '')
+                      .replace(/\bfunc\b/, 'function');
+
+          if (obj.type.indexOf('isRequired') > 0) {
+            obj.type = obj.type.split('.').shift();
+            obj.required = true;
+          }
+          else {
+            obj.required = false;
+          }
+
           props.push(obj);
         });
 
